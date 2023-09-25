@@ -42,10 +42,20 @@ func init() {
 
 func main() {
 	defer func() { wr.Flush() }()
+	var N int
+	fmt.Scan(&N)
 
-	//ここに処理を書く
-	n := in()
-	out(n)
+	S := make([]int, N)
+	for i := range S {
+		fmt.Scan(&S[i])
+	}
+
+	fmt.Print(S[0])
+
+	for i := 1; i < N; i++ {
+		fmt.Print(" ", S[i]-S[i-1])
+	}
+	fmt.Println()
 
 }
 

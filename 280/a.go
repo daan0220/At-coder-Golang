@@ -23,6 +23,7 @@ import (
 	"math"
 	"os"
 	"strconv"
+	"strings"
 )
 
 //+++++++++++++++++++++++++++++++++++++++
@@ -43,9 +44,19 @@ func init() {
 func main() {
 	defer func() { wr.Flush() }()
 
-	//ここに処理を書く
-	n := in()
-	out(n)
+	r := bufio.NewReader(os.Stdin)
+	w := bufio.NewWriter(os.Stdout)
+	defer w.Flush()
+
+	var h, W int
+	fmt.Fscan(r, &h, &W)
+	count := 0
+	for i := 0; i < h; i++ {
+		var s string
+		fmt.Fscan(r, &s)
+		count += strings.Count(s, "#")
+	}
+	fmt.Println(count)
 
 }
 
