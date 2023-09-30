@@ -42,11 +42,27 @@ func init() {
 
 func main() {
 	defer func() { wr.Flush() }()
+	rd := bufio.NewReader(os.Stdin)
+	wr := bufio.NewWriter(os.Stdout)
+	defer wr.Flush()
 
-	//ここに処理を書く
-	n := in()
-	out(n)
+	var t int
+	fmt.Fscan(rd, &t)
 
+	for i := 0; i < t; i++ {
+		var n int
+		fmt.Fscan(rd, &n)
+
+		var a, ans int
+		for j := 0; j < n; j++ {
+			fmt.Fscan(rd, &a)
+			if a%2 == 1 {
+				ans++
+			}
+		}
+
+		fmt.Fprintln(wr, ans)
+	}
 }
 
 //+++++++++++++++++++++++++++++++++++++++

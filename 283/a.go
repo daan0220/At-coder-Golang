@@ -43,9 +43,10 @@ func init() {
 func main() {
 	defer func() { wr.Flush() }()
 
-	//ここに処理を書く
-	n := in()
-	out(n)
+	var A, B float64
+	fmt.Scan(&A, &B)
+
+	fmt.Println(int(math.Pow(A, B)))
 
 }
 
